@@ -45,4 +45,4 @@ app.use('*', (req, res, next) => {
 });
 
 winston.log('info', 'Server listening on port', config.PORT);
-app.listen(config.PORT);
+app.listen(config.PORT, '0.0.0.0');
