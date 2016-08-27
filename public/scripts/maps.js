@@ -17,7 +17,11 @@ $(document).ready(function() {
                     });
                     marker.setMap(map);
                     google.maps.event.addListener(marker,'click',function() {
-                        console.log(val.name);
+                        template = [
+                            '<h5>', val.name, '</h5>',
+                            '<hr />',
+                            
+                        ].join('');
                     });
                 });
             },

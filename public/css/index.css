@@ -18,3 +18,9 @@ nav {
 .brand-logo, .detail-container {
     margin-left: 20px !important;
 }
+
+.new.badge.red {
+    line-height: 20px;
+    font-size: 11px;
+    margin-top: 8px;
+}
