@@ -31,7 +31,7 @@ let config = {
         HOST: 'localhost'
     },
 
-    APP_NAME: 'EIDR',
+    APP_NAME: 'Internet of Trees',
     APP_URL: 'http://localhost:8000',
 
     ENV: 'development',
