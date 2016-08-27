@@ -15,30 +15,29 @@ ref.once('value', function(data) {
             name: 'Acacia',
             familyName: 'Fabaceae',
             endangered: 'False',
-            lat: '3.145',
-            lng: '0.31415'
+            lat: '14.15983764',
+            lng: '121.24256036'
         });
         ref.push({
             name: 'Narra',
             familyName: 'Fabaceae',
             endangered: 'True',
-            lat: '3.14',
-            lng: '0.31415'
+            lat: '14.16129404',
+            lng: '121.24247453'
         })
         ref.push({
-            name: 'Pili',
-            familyName: 'Burseraceae',
+            name: 'Mango',
+            familyName: 'Anacardiaceae',
             endangered: 'True',
-            lat: '3.14',
-            lng: '0.31415'
+            lat: '14.16911681',
+            lng: '121.24560199'
         })
         ref.push({
             name: 'Coconut',
             familyName: 'Arecaceae',
             endangered: 'False',
-            lat: '3.14',
-            lng: '0.31415',
-            _disease: 'Cocolisap'
+            lat: '14.16634974',
+            lng: '121.24273002'
         })
     }
 });

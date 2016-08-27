@@ -7,10 +7,14 @@ nav {
     left: -5px;
 }
 
-.brand-logo, .detail-container {
-    margin-left: 20px !important;
+.content {
+    margin-left: 6.88vw !important;
 }
 
 .detail-container {
     height: 80vh;
+}
+
+.brand-logo, .detail-container {
+    margin-left: 20px !important;
 }
