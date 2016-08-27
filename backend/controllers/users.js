@@ -62,9 +62,9 @@ exports.get_trees = (req, res, next) => {
         let trees = [];
         ref.on('value', function(data) {
             trees.push(data.val());
-        });a
+        });
 
-        if(trees.length === 0) {
+        if(trees.length == 0) {
             res.status(404).send({
                 message: 'No tree data found'
             });
