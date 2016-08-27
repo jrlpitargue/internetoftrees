@@ -2,8 +2,8 @@ function build_chart (categories, values, type) {
     let sub = '';
 
     switch (type) {
-        case 'trees': sub = 'Trees'; break;
-        case 'endangered': sub = 'Endangered/Endemic'; break;
+        case 'endangered': sub = 'Trees'; break;
+        case 'trees': sub = 'Endangered/Endemic'; break;
     }
 
     $('#container').highcharts({
@@ -43,7 +43,7 @@ function process_command (type) {
         url: 'http://localhost:8000/api/trees',
         success: function(data) {
             $.each(data[0], function(index, val) {
-                if (type !== 'trees') {
+                if (type != 'trees') {
                     if (val.name in results) {
                         results[val.name] += 1;
                     }
@@ -75,8 +75,8 @@ function process_command (type) {
 }
 
 function initialize_charts (type) {
-    let trees = $('#trees');
-    let endan = $('#endangered');
+    let endan = $('#trees');
+    let trees = $('#endangered');
 
     trees.click((e) => {
         if(process_command('trees')) {

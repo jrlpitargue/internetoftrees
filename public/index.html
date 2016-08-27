@@ -16,11 +16,11 @@
         <meta name="theme-color" content="#ffffff">
     </head>
     <body>
-        <nav>
-            <div class="nav-wrapper white">
+        <nav class="black z-depth-0">
+            <div class="nav-wrapper">
                 <a href="#" class="brand-logo">
-                    <span class="green-text text-lighten-1">IOT</span>
-                    <span class="blue-text text-lighten-1" style="margin-left: -7px">r</span>
+                    <span class="green-text text-lighten-1">IoT</span>
+                    <span class="brown-text text-lighten-1" style="margin-left: -7px">r</span>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a id="charts-btn" class="green-text text-lighten-1" href="#">Charts</a></li>
@@ -30,9 +30,9 @@
         </nav>
 
         <div id="content" class="content row" style='margin:0 auto'>
-            <section id="map" class="col s7 z-depth-1"></section>
+            <section id="map" class="col s7 z-depth-0"></section>
 
-            <section class="detail-container col s4 z-depth-1" style="padding:0">
+            <section class="detail-container col s4 z-depth-0" style="padding:0">
                 <h5 class="container" style="margin-top: 20px;">Click on a marker to display data.</h5>
             </section>
 
@@ -55,8 +55,8 @@
 
             function chart_template () {
                 let template = [
-                    '<div id="container" class="col s7 z-depth-1"></div>',
-                    '<section class="detail-container col s4 z-depth-1" style="padding:0; height: 200px">',
+                    '<div id="container" class="col s7 z-depth-0"></div>',
+                    '<section class="detail-container col s4 z-depth-0" style="padding:0; height: 200px">',
                         '<ul class="collection with-header" style="margin-top: 0">',
                         '<li class="collection-header">',
                         '<h4>Categorize By</h4></li>',
@@ -73,8 +73,8 @@
 
             function map_template () {
                 let template = [
-                    '<section id="map" class="col s7 z-depth-1"></section>',
-                    '<section class="detail-container col s4 z-depth-1" style="padding:0">',
+                    '<section id="map" class="col s7 z-depth-0"></section>',
+                    '<section class="detail-container col s4 z-depth-0" style="padding:0">',
                         '<ul class="collection with-header" style="margin-top: 0">',
                         '<li class="collection-header">',
                         '<h4>Acacia <span class="new badge red" data-badge-caption="endangered">',
