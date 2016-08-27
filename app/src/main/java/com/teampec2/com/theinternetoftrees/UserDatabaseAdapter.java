@@ -16,7 +16,7 @@ public class UserDatabaseAdapter {
     static final String DATABASE_NAME = "login.db";
     static final int DATABASE_VERSION = 1;
     public static final int NAME_COLUMN = 1;
-    static final String DATABASE_CREATE = "create table "+"LOGIN( "
+    static final String DATABASE_CREATE = "create table "+"USER( "
             + "ID"+" integer primary key autoincrement,"
             + "USERNAME text,"
             + "PASSWORD text,"
@@ -41,6 +41,8 @@ public class UserDatabaseAdapter {
     public  SQLiteDatabase getDatabaseInstance() {
         return db;
     }
+
+
 
     public void insertEntry(String username, String password, String email) {
         //USER (USERNAME, PASSWORD, ADDRESS)
