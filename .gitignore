@@ -10,3 +10,4 @@ backend/config/config.js
 tf/
 uploads/*.jpg
 imagematch/tmp
+imagematch/tmp/*
