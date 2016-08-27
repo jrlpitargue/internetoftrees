@@ -16,16 +16,24 @@ exports.get_tree_type = (req, res, next) => {
             [dirname, 'uploads/image.jpg']
         );
         let output = '';
+        let response;
 
         python.stdout.on('data', (data) => {
             output += data;
+            output = output.split('\n')[1];
+
+            response = {
+                type: output.substr(0, output.length-9),
+                value: output.substr(-7,5),
+                match: parseFloat(output.substr(-7,5), 10) > 0.95
+            }
         });
 
         python.on('close', (code) => { 
             if (code !== 0) {  
-                return res.status(500).send(code); 
+                return res.status(500).send({ERROR: 'Server error'}); 
             }
-            return res.status(200).send(output);
+            return res.status(200).send(response);
         });
     }
 
