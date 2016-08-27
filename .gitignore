@@ -9,3 +9,4 @@ backend/logs/*.log*
 backend/config/config.js
 tf/
 uploads/*.jpg
+imagematch/tmp
