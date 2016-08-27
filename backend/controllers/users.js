@@ -33,11 +33,13 @@ exports.create_tree = (req, res, next) => {
         {
             name: '',
             familyName: '',
-            endangered: '',
+            status: {},
             lat: '',
             lng: '',
+            _seaLevel: '',
             _disease: '',
-            _wildlife: ''
+            _wildlife: '',
+            _notes: ''
         },
         req.body
     );
