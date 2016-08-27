@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">The Internet of Trees</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+
+    <!--SignUp/SignIn-->
+    <string name="form_username">Username</string>
+    <string name="form_username_helper">Enter username&#8230;</string>
+    <string name="form_password">Password</string>
+    <string name="form_password_helper">Enter password&#8230;</string>
+    <string name="form_confirm_password">Confirm Password</string>
+    <string name="form_confirm_password_helper">Re-enter password&#8230;</string>
+    <string name="form_email">Email</string>
+    <string name="form_email_helper">Enter email&#8230;</string>
+    <string name="string_login">LOGIN</string>
+    <string name="string_login_link">Already have a username? Sign in here.</string>
+    <string name="string_register">REGISTER</string>
+    <string name="string_register_link">Not registered? Sign up here.</string>
+
+    <!--Main-->
+    <string name="string_logout">LOGOUT</string>
 </resources>
