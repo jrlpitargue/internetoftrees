@@ -22,7 +22,7 @@ app.set('name', config.APP_NAME);
 
 
 winston.cli();
-winston.level = config.LOG_LEVEL || 'silly'; 
+winston.level = config.LOG_LEVEL || 'silly';
 winston.log('info', 'Starting', config.APP_NAME, 'on', config.ENV, 'environment');
 
 
@@ -40,7 +40,9 @@ app.use(cookie_parser());
 app.use(compression());
 app.use(express.static(config.ASSETS_DIR));
 app.use('/api', router(express.Router()));
-
+app.use('*', (req, res, next) => {
+    res.sendFile(__dirname + '../public/index.html');
+});
 
 winston.log('info', 'Server listening on port', config.PORT);
 app.listen(config.PORT);

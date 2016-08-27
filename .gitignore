@@ -7,3 +7,7 @@ public/bower_components
 backend/logs/*.logs*
 backend/logs/*.log*
 backend/config/config.js
+tf/
+uploads/*.jpg
+imagematch/tmp
+imagematch/tmp/*

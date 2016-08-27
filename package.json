@@ -15,10 +15,13 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "file-stream-rotator": "0.0.7",
+    "firebase": "^3.3.0",
     "helmet": "^2.1.2",
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
+    "multer": "^1.2.0",
     "path": "^0.12.7",
+    "python-shell": "^0.4.0",
     "serve-favicon": "^2.3.0",
     "winston": "^2.2.0"
   },
