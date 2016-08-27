@@ -31,9 +31,13 @@ exports.create_user = (req, res, next) => {
 exports.create_tree = (req, res, next) => {
     const data = util.get_data(
         {
-            treeType: '',
+            name: '',
+            familyName: '',
+            endangered: '',
             lat: '',
-            lng: ''
+            lng: '',
+            _disease: '',
+            _wildlife: ''
         },
         req.body
     );
@@ -46,7 +50,7 @@ exports.create_tree = (req, res, next) => {
 
         ref.child('trees').push(data);
 
-        res.status(200).send({message: 'OK'});
+        res.status(200).send(data);
     }
 
     start();
@@ -55,11 +59,18 @@ exports.create_tree = (req, res, next) => {
 exports.get_trees = (req, res, next) => {
     const ref = Firebase.database().ref('trees');
     function start() {
+        let trees = [];
         ref.on('value', function(data) {
-            console.log(data.val())
-        });
+            trees.push(data.val());
+        });a
 
-        res.status(200).send({message: 'OK'});
+        if(trees.length === 0) {
+            res.status(404).send({
+                message: 'No tree data found'
+            });
+        }
+
+        res.status(200).send(trees);
     }
 
     start();
