@@ -2,8 +2,13 @@ package com.teampec2.com.theinternetoftrees;
 
 import android.*;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -18,6 +23,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import com.loopj.android.http.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import cz.msebera.android.httpclient.Header;
+
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener {
@@ -25,7 +40,8 @@ public class MapsActivity extends FragmentActivity implements
     private GoogleMap mMap;
     private Button btnData;
     private static final int LOCATION_ACCESS_REQUEST = 0;
-
+    private static final int CAMERA_REQUEST = 1888;
+    private String mCurrentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +118,87 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+//      Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+
         return false;
+    }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, CAMERA_REQUEST);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            try {
+//                mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
+//                mImageView.setImageBitmap(mImageBitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+            File photo = new File(mCurrentPhotoPath);
+            RequestParams params = new RequestParams();
+            try {
+                params.put("image", photo);
+            } catch(FileNotFoundException e) {}
+
+            /*AsyncHttpClient client = new AsyncHttpClient();
+            client.post("10.0.2.174:8000/api/image", params, new AsyncHttpResponseHandler() {
+
+                @Override
+                public void onStart() {
+                    // called before request is started
+                }
+
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                    // called when response HTTP status is "200 OK"
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                    // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                }
+
+                @Override
+                public void onRetry(int retryNo) {
+                    // called when request is retried
+                }
+            });*/
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  // prefix
+                ".jpg",         // suffix
+                storageDir      // directory
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
     }
 
 }
