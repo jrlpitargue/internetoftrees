@@ -8,20 +8,35 @@
 
         <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
         <link rel='stylesheet' href='./bower_components/materialize/dist/css/materialize.min.css'>
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel='stylesheet' href='./css/index.css'>
 
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
     </head>
     <body>
-        <div class="header"></div>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">IOT</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Sass</a></li>
+                    <li><a href="#">Components</a></li>
+                    <li><a href="#">PJHRobles</a></li>
+                </ul>
+            </div>
+        </nav>
 
-        <div class="container">
-            <h1>Content Goes here</h1>
+        <div class="row">
+            <section id="map" class="col s7 offset-s1 z-depth-1"></section>
+
+            <section class="detail-container col s3 z-depth-1">
+                <h5>Details goes here</h5>
+            </section>
         </div>
 
-        <script src='./bower_components/jquery/dist/jquery.min.js'>
-        </script>
+        <script src='./bower_components/jquery/dist/jquery.min.js'></script>
+        <script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyAicgrlV6dE1hx_-s-E8ba6Hrw_yLxgwYA'></script>
+        <script src='./scripts/maps.js'></script>
     </body>
 </html>

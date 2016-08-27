@@ -1,0 +1,16 @@
+nav {
+    margin-bottom: 4.67vh;
+}
+
+#map {
+    height: 80vh;
+    left: -5px;
+}
+
+.brand-logo, .detail-container {
+    margin-left: 20px !important;
+}
+
+.detail-container {
+    height: 80vh;
+}
