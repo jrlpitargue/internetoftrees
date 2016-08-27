@@ -1,0 +1,6 @@
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:29 +0000] "GET / HTTP/1.1" 404 13 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:29 +0000] "GET /favicon.ico HTTP/1.1" 404 24 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:29 +0000] "GET /favicon.ico HTTP/1.1" 404 24 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:32 +0000] "GET / HTTP/1.1" 404 13 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:37 +0000] "GET /api HTTP/1.1" 404 32 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+::ffff:127.0.0.1 - - [27/Aug/2016:10:25:41 +0000] "GET /api/trees HTTP/1.1" 200 16 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"

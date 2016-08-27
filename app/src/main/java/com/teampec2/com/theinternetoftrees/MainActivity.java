@@ -1,14 +1,27 @@
 package com.teampec2.com.theinternetoftrees;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,16 +29,38 @@ public class MainActivity extends AppCompatActivity {
 //    TextView sampleText;
 //    Button btnLogout;
 
+    private DatabaseReference firebaseDataRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-//        session = new SessionManager(getApplicationContext());
+        if(hasInternetAccess()) {
+            // initialize firebase database reference
+            firebaseDataRef = FirebaseDatabase.getInstance().getReference();
 
+            ValueEventListener locationMetaDataListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // set marker here
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            firebaseDataRef.addValueEventListener(locationMetaDataListener);
+        }
+//        setContentView(R.layout.activity_main);
+//
+//        session = new SessionManager(getApplicationContext());
+//
 //        sampleText = (TextView) findViewById(R.id.main_sample_textview);
 //        btnLogout = (Button) findViewById(R.id.main_logout_btn);
-
+//
 //        /**
 //         * Call this function whenever you want to check user login
 //         * This will redirect user to LoginActivity is he is not
@@ -77,5 +112,29 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
         System.exit(0);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+    }
+
+    public boolean hasInternetAccess() {
+        if (isNetworkAvailable()) {
+            try {
+                HttpURLConnection urlc = (HttpURLConnection)
+                        (new URL("http://clients3.google.com/generate_204")
+                                .openConnection());
+                urlc.setRequestProperty("User-Agent", "Android");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                return (urlc.getResponseCode() == 204 &&
+                        urlc.getContentLength() == 0);
+            } catch (IOException e) { }
+        }
+        return false;
     }
 }
