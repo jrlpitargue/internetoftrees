@@ -65,12 +65,12 @@ exports.get_trees = (req, res, next) => {
         });
 
         if(trees.length == 0) {
-            res.status(404).send({
+            return res.status(404).send({
                 message: 'No tree data found'
             });
         }
 
-        res.status(200).send(trees);
+        return res.status(200).send(trees);
     }
 
     start();

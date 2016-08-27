@@ -17,7 +17,10 @@ exports.get_tree_type = (req, res, next) => {
         );
         let output = '';
         let response;
-
+        console.log(req.file);
+        if (typeof req.file === 'undefined') {
+            return res.status(400).send({ MESSAGE: 'No image sent!' });
+        }
         python.stdout.on('data', (data) => {
             output += data;
             output = output.split('\n')[1];
