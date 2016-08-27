@@ -2,8 +2,9 @@ function build_chart (categories, values, type) {
     let sub = '';
 
     switch (type) {
-        case 'endangered': sub = 'Trees'; break;
-        case 'trees': sub = 'Endangered/Endemic'; break;
+        case 'trees': sub = 'Trees'; break;
+        case 'endangered': sub = 'Endangered/Endemic'; break;
+        case 'invasive': sub = 'Invasive'; break;
     }
 
     $('#container').highcharts({
@@ -43,7 +44,7 @@ function process_command (type) {
         url: 'http://localhost:8000/api/trees',
         success: function(data) {
             $.each(data[0], function(index, val) {
-                if (type != 'trees') {
+                if (type == 'trees') {
                     if (val.name in results) {
                         results[val.name] += 1;
                     }
@@ -51,12 +52,20 @@ function process_command (type) {
                         results[val.name] = 1;
                     }
                 }
-                else {
-                    if (val.endangered in results) {
-                        results[val.endangered] += 1;
+                else if (type == 'endangered') {
+                    if (val.status.endangered in results) {
+                        results[val.status.endangered] += 1;
                     }
                     else {
-                        results[val.endangered] = 1;
+                        results[val.status.endangered] = 1;
+                    }
+                }
+                else {
+                    if (val.status.invasive in results) {
+                        results[val.status.invasive] += 1;
+                    }
+                    else {
+                        results[val.status.invasive] = 1;
                     }
                 }
             });
@@ -75,13 +84,15 @@ function process_command (type) {
 }
 
 function initialize_charts (type) {
-    let endan = $('#trees');
-    let trees = $('#endangered');
+    let trees = $('#trees');
+    let endan = $('#endangered');
+    let invas = $('#invasive');
 
     trees.click((e) => {
         if(process_command('trees')) {
             trees.addClass('active');
             endan.removeClass('active');
+            invas.removeClass('active');
         }
     });
 
@@ -89,6 +100,15 @@ function initialize_charts (type) {
         if(process_command('endangered')) {
             trees.removeClass('active');
             endan.addClass('active');
+            invas.removeClass('active');
+        }
+    });
+
+    invas.click((e) => {
+        if(process_command('invasive')) {
+            trees.removeClass('active');
+            endan.removeClass('active');
+            invas.addClass('active');
         }
     });
 

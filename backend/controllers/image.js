@@ -47,9 +47,7 @@ exports.get_tree_type = (req, res, next) => {
                         response['notes'] = tree.notes;
                         response['endangered'] = tree.status.endangered;
                         response['invasive'] = tree.status.invasive;
-                        response['seaLevel'] = tree.seaLevel;
                         response['wiki'] = tree.wiki;
-                        response['wildlife'] = tree.wildlife;
                     }
                 }
             });
