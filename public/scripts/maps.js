@@ -42,7 +42,6 @@ function initialize_map() {
                                 '<a class="wiki" href="',val.wiki,'"><i class="material-icons">keyboard_arrow_right</i></a>',
                             '</li>',
                             '<li class="collection-item">Family: ',val.familyName,'</li>',
-                            '<li class="collection-item">Sea Level: ',val.seaLevel,'</li>',
                         '</ul>',
                         '<div id="about">',
                             '<i>Forester\'s Notes</i><br />',

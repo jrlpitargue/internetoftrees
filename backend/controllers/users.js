@@ -36,7 +36,6 @@ exports.create_tree = (req, res, next) => {
             status: {},
             lat: '',
             lng: '',
-            _seaLevel: '',
             _disease: '',
             _wildlife: '',
             _notes: ''
