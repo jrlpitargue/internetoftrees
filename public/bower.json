@@ -1,0 +1,22 @@
+{
+  "name": "public",
+  "authors": [
+    "PJHRobles <joshuahrobles@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "materialize": "^0.97.7",
+    "highcharts": "^4.2.6"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta x-http-equiv='x-ua-compatible' content='ie=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Internet of Trees</title>
+
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+        <link rel='stylesheet' href='./bower_components/materialize/dist/css/materialize.min.css'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel='stylesheet' href='./css/index.css'>
+
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <nav class="black z-depth-0">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">
+                    <span class="green-text text-lighten-1">IoT</span>
+                    <span class="brown-text text-lighten-1" style="margin-left: -7px">r</span>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a id="charts-btn" class="green-text text-lighten-1" href="#">Charts</a></li>
+                    <li><a id="maps-btn" class="green-text text-lighten-1" href="#">Maps</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="content" class="content row" style='margin:0 auto'>
+            <section id="map" class="col s7 z-depth-0"></section>
+
+            <section class="detail-container col s4 z-depth-0" style="padding:0">
+                <h5 class="container" style="margin-top: 20px;">Click on a marker to display data.</h5>
+            </section>
+
+        </div>
+
+        <script src='./bower_components/jquery/dist/jquery.min.js'></script>
+        <script src='./bower_components/highcharts/highcharts.js'></script>
+        <script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyAicgrlV6dE1hx_-s-E8ba6Hrw_yLxgwYA'></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src='./scripts/maps.js'></script>
+        <script src='./scripts/charts.js'></script>
+    </body>
+    <script>
+        'use strict';
+
+        $(() => {
+            let charts = $('#charts-btn');
+            let maps = $('#maps-btn');
+            let cont = $('#content');
+
+            function chart_template () {
+                let template = [
+                    '<div id="container" class="col s7 z-depth-0"></div>',
+                    '<section class="detail-container col s4 z-depth-0" style="padding:0; height: 225px">',
+                        '<ul class="collection with-header" style="margin-top: 0">',
+                        '<li class="collection-header">',
+                        '<h4>Categorize By</h4></li>',
+                        '<a href="#" id="trees" class="collection-item">Trees</li>',
+                        '<a href="#" id="endangered" class="collection-item">Endangered/Endemic</li>',
+                        '<a href="#" id="invasive" class="collection-item">Invasive</li>',
+                        '</ul>',
+                    '</section>'
+                ].join('');
+
+                cont.empty();
+                cont.append(template);
+                initialize_charts();
+            }
+
+            function map_template () {
+                let template = [
+                    '<section id="map" class="col s7 z-depth-0"></section>',
+                    '<section class="detail-container col s4 z-depth-0" style="padding:0">',
+                        '<ul class="collection with-header" style="margin-top: 0">',
+                        '<li class="collection-header">',
+                        '<h5>Click on a marker to display data.</h5></li>',
+                        '</ul>',
+                    '</section>'
+                ].join('');
+
+                cont.empty();
+                cont.append(template);
+                initialize_map();
+            }
+
+            maps.click((e) => {
+                map_template();
+            });
+
+            charts.click((e) => {
+                chart_template();
+            });
+        });
+    </script>
+</html>
