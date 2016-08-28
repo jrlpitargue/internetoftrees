@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "118281583184",
+    "firebase_url": "https://teampec2-internetoftrees.firebaseio.com",
+    "project_id": "teampec2-internetoftrees",
+    "storage_bucket": "teampec2-internetoftrees.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118281583184:android:13e4a35b7af1a8c6",
+        "android_client_info": {
+          "package_name": "com.example.teampec2.com.theinternetoftrees"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118281583184-munqmcqq3eepia05829h88flevvbe8fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDloekup7vnU32YPwqTp6t9CMkN-2KTUlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118281583184:android:b0e7becb49a85e1c",
+        "android_client_info": {
+          "package_name": "com.example.teampec2.com.theinternetoftrees"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118281583184-munqmcqq3eepia05829h88flevvbe8fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDloekup7vnU32YPwqTp6t9CMkN-2KTUlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
