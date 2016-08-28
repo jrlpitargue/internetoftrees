@@ -29,26 +29,26 @@ exports.create_user = (req, res, next) => {
 };
 
 exports.create_tree = (req, res, next) => {
-    const data = util.get_data(
-        {
-            name: '',
-            familyName: '',
-            status: {},
-            lat: '',
-            lng: '',
-            _seaLevel: '',
-            _disease: '',
-            _wildlife: '',
-            _notes: ''
-        },
-        req.body
-    );
-    const ref = Firebase.database().ref();
+    const data = {
+            name: req.body.name,
+            familyName: req.body.familyName,
+            lat: req.body.lat,
+            lng: req.body.lng,
+            disease: req.body.disease || null,
+            wildlife: req.body.wildlife || null,
+            notes: req.body.notes || null
+    }
 
+    const ref = Firebase.database().ref();
+    console.log(data);
     function start() {
         if (data instanceof Error) {
             return res.status(400).send({message: data.message});
         }
+
+        data.status = {};
+        data.status['endangered'] = req.body.endangered || false;
+        data.status['invasive'] = req.body.invasive || false;
 
         ref.child('trees').push(data);
 

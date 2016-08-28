@@ -23,6 +23,8 @@ exports.get_tree_type = (req, res, next) => {
             return res.status(400).send({ MESSAGE: 'No image sent!' });
         }
 
+        console.log(req.file);
+
         python.stdout.on('data', (data) => {
             output += data;
             output = output.split('\n')[1];
@@ -43,11 +45,11 @@ exports.get_tree_type = (req, res, next) => {
                     let tree = trees[key];
 
                     if (tree.name.toLowerCase() === type.toLowerCase()) {
-                        response['familyName'] = tree.familyName;
-                        response['notes'] = tree.notes;
-                        response['endangered'] = tree.status.endangered;
-                        response['invasive'] = tree.status.invasive;
-                        response['wiki'] = tree.wiki;
+                        response['familyName'] = tree.familyName || null;
+                        response['notes'] = tree.notes || null;
+                        response['endangered'] = tree.status.endangered || false;
+                        response['invasive'] = tree.status.invasive || false;
+                        response['wiki'] = tree.wiki || '#';
                     }
                 }
             });
@@ -57,6 +59,7 @@ exports.get_tree_type = (req, res, next) => {
             if (code !== 0) {  
                 return res.status(500).send({ERROR: 'Server error'}); 
             }
+            console.log(response);
             return res.status(200).send(response);
         });
     }

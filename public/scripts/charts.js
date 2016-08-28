@@ -46,26 +46,46 @@ function process_command (type) {
             $.each(data[0], function(index, val) {
                 if (type == 'trees') {
                     if (val.name in results) {
-                        results[val.name] += 1;
+                        results[val.name.toLowerCase()] += 1;
                     }
                     else {
-                        results[val.name] = 1;
+                        results[val.name.toLowerCase()] = 1;
                     }
                 }
                 else if (type == 'endangered') {
                     if (val.status.endangered in results) {
-                        results[val.status.endangered] += 1;
+                        if (typeof val.status.endangered == 'undefined') {
+                            results['false'] += 1;
+                        }
+                        else {
+                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                        }
                     }
                     else {
-                        results[val.status.endangered] = 1;
+                        if (typeof val.status.endangered == 'undefined') {
+                            results['false'] += 1;
+                        }
+                        else {
+                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                        }
                     }
                 }
                 else {
                     if (val.status.invasive in results) {
-                        results[val.status.invasive] += 1;
+                        if (typeof val.status.endangered == 'undefined') {
+                            results['false'] += 1;
+                        }
+                        else {
+                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                        }
                     }
                     else {
-                        results[val.status.invasive] = 1;
+                        if (typeof val.status.endangered == 'undefined') {
+                            results['false'] += 1;
+                        }
+                        else {
+                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                        }
                     }
                 }
             });
