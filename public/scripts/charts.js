@@ -44,7 +44,8 @@ function process_command (type) {
         url: 'http://localhost:8000/api/trees',
         success: function(data) {
             $.each(data[0], function(index, val) {
-                if (type == 'trees') {
+
+                if (type === 'trees') {
                     if (val.name in results) {
                         results[val.name.toLowerCase()] += 1;
                     }
@@ -52,18 +53,18 @@ function process_command (type) {
                         results[val.name.toLowerCase()] = 1;
                     }
                 }
-                else if (type == 'endangered') {
+                else if (type === 'endangered') {
                     if (val.status.endangered in results) {
-                        if (typeof val.status.endangered == 'undefined') {
+                        if (typeof val.status.endangered === 'undefined') {
                             results['false'] += 1;
                         }
                         else {
-                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                            results[val.status.endangered.toString().toLowerCase()] += 1;
                         }
                     }
                     else {
-                        if (typeof val.status.endangered == 'undefined') {
-                            results['false'] += 1;
+                        if (typeof val.status.endangered === 'undefined') {
+                            results['false'] = 1;
                         }
                         else {
                             results[val.status.endangered.toString().toLowerCase()] = 1;
@@ -72,19 +73,19 @@ function process_command (type) {
                 }
                 else {
                     if (val.status.invasive in results) {
-                        if (typeof val.status.endangered == 'undefined') {
+                        if (typeof val.status.invasive === 'undefined') {
                             results['false'] += 1;
                         }
                         else {
-                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                            results[val.status.invasive.toString().toLowerCase()] += 1;
                         }
                     }
                     else {
-                        if (typeof val.status.endangered == 'undefined') {
-                            results['false'] += 1;
+                        if (typeof val.status.invasive === 'undefined') {
+                            results['false'] = 1;
                         }
                         else {
-                            results[val.status.endangered.toString().toLowerCase()] = 1;
+                            results[val.status.invasive.toString().toLowerCase()] = 1;
                         }
                     }
                 }
