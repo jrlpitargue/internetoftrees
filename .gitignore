@@ -1,0 +1,13 @@
+node_modules
+*~
+*.*~
+public/bower_components
+*.logs
+*.log
+backend/logs/*.logs*
+backend/logs/*.log*
+backend/config/config.js
+tf/
+uploads/*.jpg
+imagematch/tmp
+imagematch/tmp/*
