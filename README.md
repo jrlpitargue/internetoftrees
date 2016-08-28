@@ -8,3 +8,5 @@ __Members :__
 * Simon Barrameda
 * Kean Paderes
 * Paul Joshua Robles
+
+The mobile application can be found on the ```mobile_app``` branch while the web application can be found on the ```web_app``` branch.
